@@ -16,10 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-//GET Route for homepage
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/index.html'))
-);
+
 //GET Route for notes
 app.get("/notes", (req, res) =>
   res.sendFile(path.join(__dirname, "public/notes.html"))
@@ -28,12 +25,17 @@ app.get("/notes", (req, res) =>
 //Reads the db.json file and returns back the JSON data
 app.get("/api/notes", function (req, res) {
     fs.readFile("db/db.json", "utf8", (err, data) => {
-      var jsonData = JSON.parse(data);
-      console.log(jsonData);
-      res.json(jsonData);
+        var jsonData = JSON.parse(data);
+        console.log(err)
+        console.log(data);
+        res.json(jsonData);
     });
   });
 
+//GET Route for homepage
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, 'public/index.html'))
+);
 
 
 
