@@ -1,8 +1,8 @@
 # Note_Taker
 
 ## Description
-User can create and delete notes or tasks using node to open localhost:3001 to open the webpage. 
-This project was made using npm install, npm uniqid package, and VsCode.
+User can create and delete notes or tasks using webpage from the provided link below. 
+This project was made using npm install, npm uniqid package, and VsCode. Deployed on heroku.
 
   ## Table of Contents
   * [Installation](#installation)
@@ -13,10 +13,12 @@ This project was made using npm install, npm uniqid package, and VsCode.
   * [Questions](#questions)
 
 ## Installation
-User clone repository, then run `npm install`.
+n/a.
 
 ## Usage
-Use node to open localhost:3001 to use webpage
+Click the link below to use application,
+
+https://fathomless-stream-95306-05de9e201608.herokuapp.com/
 
 [Untitled_ Aug 21 2023 5_37 PM.webm](https://github.com/Amzemina/Note_Taker/assets/128834562/2bc43db8-c8a4-4585-a43e-1b458f539e96)
 
