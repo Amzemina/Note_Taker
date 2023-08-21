@@ -6,6 +6,8 @@ const fs = require("fs");
 const path = require("path");
 //Helper method for creating unique ids
 const uniqid = require("uniqid");
+//Note import
+const Note = require('./note')
 //Port which the Express.js server will run
 const PORT = process.env.PORT || 3001;
 //Initialize an instance of Express.js
@@ -37,6 +39,37 @@ app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/index.html'))
 );
 
+//
+function readNotes() {
+    const dbNotes = fs.readFileSync('db/db.json', 'utf8')
+    return JSON.parse(dbNotes)
+    
+};
+
+//
+function writeNote(note) {
+    const currentNote = readNotes()
+    currentNote.push(note)
+    fs.writeFile('db/db.json', JSON.stringify(currentNote, null, 2), (err) => {
+        if (err) {
+            console.error('Error', err);
+        } else {
+            console.log('Generated note');
+        }
+    })
+};
+
+//POST new note to save on the request body, add it to the db.json file, and then return the new note to the client with a unique id
+app.post("/api/notes", (req, res) => {
+    if (req.body && req.body.title && req.body.text) {
+    const note = new Note(req.body.title, req.body.text, uniqid())
+    writeNote(note)
+    res.status(201).json(note);
+  } else {
+    res.status(400).json('Request body must at least contain a product name');
+  }
+    
+})
 
 
 
