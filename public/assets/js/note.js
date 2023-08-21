@@ -1,9 +1,9 @@
 class Note {
-    title; text; uniqid;
-    constructor(title, text, uniqid = null){
+    title; text; id;
+    constructor(title, text, id = null){
         this.title = title;
         this.text = text;
-        this.uniqid = uniqid;
+        this.id = id;
     }
 }
 
