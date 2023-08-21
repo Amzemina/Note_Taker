@@ -7,7 +7,7 @@ const path = require("path");
 //Helper method for creating unique ids
 const uniqid = require("uniqid");
 //Note import
-const Note = require('./note')
+const Note = require('./routes/note')
 //Port which the Express.js server will run
 const PORT = process.env.PORT || 3001;
 //Initialize an instance of Express.js
@@ -21,7 +21,7 @@ app.use(express.static('public'));
 
 //GET Route for notes
 app.get("/notes", (req, res) =>
-res.sendFile(path.join(__dirname,"..", "..", 'notes.html'))
+res.sendFile(path.join(__dirname,'./public/notes.html'))
 );
 
 //Reads the db.json file and returns back the JSON data
@@ -36,7 +36,7 @@ app.get("/api/notes", function (req, res) {
 
 //GET Route for homepage
 app.get('*', (req, res) =>
-    res.sendFile(path.join(__dirname,"..", "..", 'index.html'))
+    res.sendFile(path.join(__dirname,'./public/index.html'))
 );
 
 //Reads the db file into a variable and converts into json
